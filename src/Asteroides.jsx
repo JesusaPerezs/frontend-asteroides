@@ -27,8 +27,8 @@ function Asteroides() { // define tu componente
             <h3 className="text-lg font-bold text-blue-400">{ast.nombre}</h3>
             <p className="text-gray-300 text-sm mt-1">📏 Tamaño: {ast.tamaño_km} km</p>
             <p className="text-gray-300 text-sm">📅 Detección: {ast.fecha_deteccion}</p>
-            <p className="text-gray-300 text-sm">⚡ Velocidad: {Math.round(ast.velocidad_km_hours)} km/h</p>
-            <p className="text-gray-300 text-sm">🛰️ Distancia: {Math.round(ast.distancia_mayor_proximidad)} km</p>
+            <p className="text-gray-300 text-sm">⚡ Velocidad: {Math.round(ast.velocidad_km_hours).toLocaleString()} km/h</p>
+            <p className="text-gray-300 text-sm">🛰️ Distancia: {Math.round(ast.distancia_mayor_proximidad).toLocaleString()} km</p>
             <p className="text-gray-300 text-sm">✨ Magnitud: {ast.magnitud}</p>
             <p className="text-gray-300 text-sm">📅 Mayor cercanía: {ast.fecha_mayor_proximidad }</p>
             <p className="mt-2">
