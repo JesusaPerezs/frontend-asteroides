@@ -16,8 +16,8 @@ function Menu() {
                 <Link to="/metricas" className="border border-white px-6 py-3 rounded hover:bg-white hover:text-black transition">
                 Métricas 📊
                 </Link>
-                <Link to="/ubicacion" className="border border-white px-6 py-3 rounded hover:bg-white hover:text-black transition">
-                Ubicación 📍
+                <Link to="/foto_dia" className="border border-white px-6 py-3 rounded hover:bg-white hover:text-black transition">
+                Foto del día
                 </Link>
             </div>
             
