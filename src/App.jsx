@@ -4,6 +4,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Menu from "./Menu"
 import Asteroides from "./Asteroides"
+import Metricas from "./Metricas"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         {/* path = la URL | element = qué pantalla mostrar */}
         <Route path="/" element={<Menu />} />
         <Route path="/asteroides" element={<Asteroides />} />
+        <Route path="/metricas" element={<Metricas />} />
       </Routes>
     </BrowserRouter>
   )

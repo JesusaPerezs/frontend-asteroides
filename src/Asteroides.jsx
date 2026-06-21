@@ -15,14 +15,14 @@ function Asteroides() { // define tu componente
 
   return (
     <div className="min-h-screen bg-gray-950 text-white p-8"> 
-      <h1 className="text-4xl font-bold text-center mb-2">
+      <h1 className="text-4xl font-bold text-center mb-13">
         Tracker de Asteroides 🚀
       </h1>
-      <p className="text-center text-gray-400 mb-8">
-        {asteroides.length} asteroides detectados 
-      </p>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-        {asteroides.map(ast => ( 
+        {[...asteroides]
+        .sort((a, b) => b.fecha_deteccion.localeCompare(a.fecha_deteccion))
+        .map(ast => (
           <div key={ast.id} className="bg-gray-800 rounded-xl p-5 border border-gray-700"> 
             <h3 className="text-lg font-bold text-blue-400">{ast.nombre}</h3>
             <p className="text-gray-300 text-sm mt-1">📏 Tamaño: {ast.tamaño_km} km</p>
