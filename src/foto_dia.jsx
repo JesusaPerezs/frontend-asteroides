@@ -2,17 +2,23 @@ import { useState, useEffect } from "react"
 
 function FotoDia() {
   const [foto, setFoto] = useState({})
+  const [cargando, setCargando] = useState(true)
 
   useEffect(() => {
     fetch("https://asteroides-api-979143368634.europe-west1.run.app/foto")
       .then(res => res.json())
-      .then(datos => setFoto(datos))
+      .then(datos => {
+        setFoto(datos)
+        setCargando(false)
+})
   }, [])
 
   return (
     <div className="min-h-screen bg-gray-950 text-white p-8">
       <h1 className="text-4xl font-bold text-center mb-8">Foto del día 🖼️</h1>
-      <div className="flex flex-col md:flex-row gap-4">
+      {cargando
+      ? <p className="text-center text-xl">Cargando... 🌀</p>
+      :<div className="flex flex-col md:flex-row gap-4">
         <div className="bg-gray-800 rounded-xl p-6">
           {foto?.media_type === "image"
           ? <img src={foto?.link} />
@@ -29,6 +35,7 @@ function FotoDia() {
           </div>
         </div>
       </div>
+      }
     </div>
   )
 }
