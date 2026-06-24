@@ -2,11 +2,15 @@ import { useState, useEffect } from "react"
 
 function Metricas() {
   const [asteroides, setAsteroides] = useState([])
+  const [cargando, setCargando] = useState(true)
 
   useEffect(() => {
     fetch("https://asteroides-api-979143368634.europe-west1.run.app/asteroides")
       .then(res => res.json())
-      .then(datos => setAsteroides(datos.asteroides))
+      .then(datos => {
+        setAsteroides(datos.asteroides)
+        setCargando(false)
+  })
   }, [])
   
   const masRapido = [...asteroides].sort((a,b) => b.velocidad_km_hours - a.velocidad_km_hours)[0]
@@ -17,6 +21,9 @@ function Metricas() {
   return (
     <div className="min-h-screen bg-gray-950 text-white p-8">
       <h1 className="text-4xl font-bold text-center mb-8">Métricas 📊</h1>
+      {cargando
+      ? <p className="text-center text-xl">Cargando... 🌀</p>
+      : <div>
       <p className="text-center text-gray-400 mb-10 text-xl">
         {asteroides.length} asteroides detectados 
       </p>
@@ -43,7 +50,9 @@ function Metricas() {
         </div>
       </div>
     </div>
-  )
+    }
+  </div>
+)
 }
 
 export default Metricas
