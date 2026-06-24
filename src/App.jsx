@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Menu from "./Menu"
 import Asteroides from "./Asteroides"
 import Metricas from "./Metricas"
+import FotoDia from "./foto_dia"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Menu />} />
         <Route path="/asteroides" element={<Asteroides />} />
         <Route path="/metricas" element={<Metricas />} />
+        <Route path="/foto_dia" element={<FotoDia />} />
       </Routes>
     </BrowserRouter>
   )

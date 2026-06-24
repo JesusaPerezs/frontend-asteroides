@@ -17,7 +17,7 @@ function Menu() {
                 Métricas 📊
                 </Link>
                 <Link to="/foto_dia" className="border border-white px-6 py-3 rounded hover:bg-white hover:text-black transition">
-                Foto del día
+                Foto del día  💥
                 </Link>
             </div>
             
