@@ -19,18 +19,21 @@ function Asteroides() { // define tu componente
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white p-8"> 
-      <h1 className="text-4xl font-bold text-center mb-13">
-        Tracker de Asteroides 🚀
+    <div className="min-h-screen bg-black text-white p-8 text-center"> 
+      <h1 
+      style={{fontFamily: "'Exo 2', sans-serif"}}
+      className="text-6xl font-bold tracking-wide mb-16"
+      >
+        ASTEROIDES DETECTADOS
       </h1>
 
       {cargando
       ? <p className="text-center text-xl">Cargando... 🌀</p>
-      : <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+      : <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
         {[...asteroides]
           .sort((a, b) => b.fecha_deteccion.localeCompare(a.fecha_deteccion))
           .map(ast => (
-            <div key={ast.id} className="bg-gray-800 rounded-xl p-5 border border-gray-700"> 
+            <div key={ast.id} className="bg-gray-800 rounded-xl p-5 border border-gray-700 mt-[5px]"> 
               <h3 className="text-lg font-bold text-blue-400">{ast.nombre}</h3>
               <p className="text-gray-300 text-sm mt-1">📏 Tamaño: {ast.tamaño_km} km</p>
               <p className="text-gray-300 text-sm">📅 Detección: {ast.fecha_deteccion}</p>
