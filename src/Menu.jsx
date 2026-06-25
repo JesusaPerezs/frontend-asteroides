@@ -1,26 +1,28 @@
 import Asteroides from "./Asteroides"
 import { Link } from "react-router-dom"
-import fondo from "./assets/fondo_4.jpg"
 
 function Menu() {
     return(
         <div
-        style={{backgroundImage: `url(${fondo})` }}
-        className="min-h-screen bg-cover bg-center flex flex-col items-start justify-start gap-4 p-12 text-white"
+        className="min-h-screen bg-black bg-cover bg-center flex flex-col items-start padding-top pt-20 gap-.5 p-7 text-white"
         >
-            <h1 className="text-4xl font-bold text-center mb-2"> Bienvenido a la aventura espacial 🚀</h1>
-            <div className="flex flex-col md:flex-row gap-4">
-                <Link to="/asteroides" className="border border-white px-6 py-3 rounded hover:bg-white hover:text-black transition">
-                Lista Asteroides 🪨
+            <h1
+            style={{fontFamily: "'Exo 2', sans-serif"}}
+            className="text-6xl font-bold tracking-wide"
+            >
+                SISTEMA DE <br /> DETECCIÓN DE <br /> ASTEROIDES
+            </h1>
+            <div className="flex flex-col gap-7 mt-[50px] ml-[20px]">
+                <Link to="/asteroides" className="border border-white/50 px-6 py-3 rounded hover:bg-white/20 hover:text-white transition">
+                Lista Asteroides
                 </Link>
-                <Link to="/metricas" className="border border-white px-6 py-3 rounded hover:bg-white hover:text-black transition">
-                Métricas 📊
+                <Link to="/metricas" className="border border-white/50 px-6 py-3 rounded hover:bg-white/20 hover:text-white transition">
+                Métricas
                 </Link>
-                <Link to="/foto_dia" className="border border-white px-6 py-3 rounded hover:bg-white hover:text-black transition">
-                Foto del día  💥
+                <Link to="/foto_dia" className="border border-white/50 px-6 py-3 rounded hover:bg-white/20 hover:text-white transition">
+                Foto del día
                 </Link>
             </div>
-            
         </div>
     )
 }
