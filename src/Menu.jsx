@@ -11,6 +11,14 @@ function Menu() {
     const escena = new THREE.Scene()
     const camara = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
     camara.position.z = 5
+    const renderer = new THREE.WebGLRenderer()
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    planeta.current.appendChild(renderer.domElement)
+    const geometria = new THREE.SphereGeometry(1, 32, 32)
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    const planetaMesh = new THREE.Mesh(geometria, material)
+    escena.add(planetaMesh)
+    renderer.render(escena, camara)
 }, [])
 
     return(
