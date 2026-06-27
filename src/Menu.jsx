@@ -8,25 +8,36 @@ function Menu() {
     const planeta = useRef()
 
     useEffect(() => {
+    while (planeta.current.firstChild) planeta.current.removeChild(planeta.current.firstChild)
     const escena = new THREE.Scene()
     const camara = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
     camara.position.z = 5
     const renderer = new THREE.WebGLRenderer()
     renderer.setSize(window.innerWidth, window.innerHeight)
-    planeta.current.appendChild(renderer.domElement)
+    const canvas = renderer.domElement
+    planeta.current.appendChild(canvas)
     const geometria = new THREE.SphereGeometry(1, 32, 32)
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
     const planetaMesh = new THREE.Mesh(geometria, material)
     escena.add(planetaMesh)
     renderer.render(escena, camara)
+    return () => {
+        renderer.dispose()
+        if (planeta.current) {
+            planeta.current.removeChild(canvas)
+    }
+}
 }, [])
 
     return(
-        <div ref={planeta} className="min-h-screen bg-black bg-cover">
-            
+        <div className="min-h-screen bg-black bg-cover relative">
 
+            {/* 👇 div EXCLUSIVO para el canvas (vacío). El ref va aquí ahora */}
+            <div ref={planeta} className="absolute inset-0 z-0" />
+
+            {/* El menú va aparte, encima del canvas (z-10) y sin bg-black */}
             <div
-            className="min-h-screen bg-black bg-cover bg-center flex flex-col items-start pt-20 gap-.5 p-7 text-white"
+            className="relative z-10 min-h-screen bg-cover bg-center flex flex-col items-start pt-20 gap-.5 p-7 text-white"
             >
                 <h1
                 style={{fontFamily: "'Exo 2', sans-serif"}}
