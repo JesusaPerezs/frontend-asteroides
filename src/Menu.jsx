@@ -20,7 +20,14 @@ function Menu() {
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
     const planetaMesh = new THREE.Mesh(geometria, material)
     escena.add(planetaMesh)
-    renderer.render(escena, camara)
+
+    function animar() {
+        requestAnimationFrame(animar)   // "vuélveme a llamar en el próximo cuadro"
+        planetaMesh.rotation.y += 0.01  // gira un pelín en el eje Y
+        renderer.render(escena, camara) // repinta la escena
+    }
+    animar()
+
     return () => {
         renderer.dispose()
         if (planeta.current) {
