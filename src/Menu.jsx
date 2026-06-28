@@ -10,10 +10,10 @@ function Menu() {
     useEffect(() => {
     while (planeta.current.firstChild) planeta.current.removeChild(planeta.current.firstChild)
     const escena = new THREE.Scene()
-    const camara = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    const camara = new THREE.PerspectiveCamera(75, planeta.current.clientWidth / planeta.current.clientHeight, 0.1, 1000)
     camara.position.z = 5
     const renderer = new THREE.WebGLRenderer()
-    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setSize(planeta.current.clientWidth, planeta.current.clientHeight)
     const canvas = renderer.domElement
     planeta.current.appendChild(canvas)
     const geometria = new THREE.SphereGeometry(1, 32, 32)
@@ -37,7 +37,7 @@ function Menu() {
 }, [])
 
     return(
-        <div className="min-h-screen bg-black bg-cover relative">
+        <div className="min-h-screen bg-black bg-cover relative overflow-hidden">
 
             {/* 👇 div EXCLUSIVO para el canvas (vacío). El ref va aquí ahora */}
             <div ref={planeta} className="absolute inset-0 z-0" />
