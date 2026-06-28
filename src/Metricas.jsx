@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Planeta from "./Planeta"
 
 function Metricas() {
   const [asteroides, setAsteroides] = useState([])
@@ -19,46 +20,56 @@ function Metricas() {
   const peligroso = asteroides.filter(ast => ast.peligroso === true).length
 
   return (
-    <div className="min-h-screen bg-black bg-cover text-white p-8"> 
-      <h1 
-      style={{fontFamily: "'Exo 2', sans-serif"}}
-      className="text-6xl font-bold tracking-wide text-center mb-8"
-      >
-        METRICAS
-      </h1>
+    <div className="min-h-screen bg-black bg-cover text-white p-8 relative overflow-hidden">
 
-      {cargando
-      ? <p className="text-center text-xl">Cargando... 🌀</p>
-      : <div>
-      <p className="text-center text-gray-400 mb-5 text-xl">
-        {asteroides.length} asteroides detectados 
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <div className="bg-gray-800 rounded-xl p-6">
-            <p className="text-lg text-gray-400">⚡ Más rápido</p>
-            <p className="text-2xl font-bold text-blue-400">{masRapido?.nombre}</p>
-            <p className="text-gray-300">{Math.round(masRapido?.velocidad_km_hours).toLocaleString('en-US')} km/h</p>
+        {/* Júpiter de fondo */}
+        <div className="absolute inset-0 z-0">
+            <Planeta textura="/jupiter.jpg" />
         </div>
-        <div className="bg-gray-800 rounded-xl p-6">
-            <p className="text-lg text-gray-400">🪨 Más grande</p>
-            <p className="text-2xl font-bold text-blue-400">{masGrande?.nombre}</p>
-            <p className="text-gray-300">{masGrande?.tamaño_km} km</p>
+
+        {/* Todo el contenido de métricas, encima */}
+        <div className="relative z-10">
+            <h1 
+            style={{fontFamily: "'Exo 2', sans-serif"}}
+            className="text-6xl font-bold tracking-wide text-center mb-8"
+            >
+              METRICAS
+            </h1>
+
+            {cargando
+            ? <p className="text-center text-xl">Cargando... 🌀</p>
+            : <div>
+            <p className="text-center text-gray-400 mb-5 text-xl">
+              {asteroides.length} asteroides detectados 
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <div className="bg-blue-900/20 rounded-xl p-9">
+                  <p className="text-lg text-gray-400">⚡ Más rápido</p>
+                  <p className="text-2xl font-bold text-blue-400">{masRapido?.nombre}</p>
+                  <p className="text-gray-300">{Math.round(masRapido?.velocidad_km_hours).toLocaleString('en-US')} km/h</p>
+              </div>
+              <div className="bg-blue-900/20 rounded-xl p-9">
+                  <p className="text-lg text-gray-400">🪨 Más grande</p>
+                  <p className="text-2xl font-bold text-blue-400">{masGrande?.nombre}</p>
+                  <p className="text-gray-300">{masGrande?.tamaño_km} km</p>
+              </div>
+              <div className="bg-blue-900/20 rounded-xl p-9">
+                <p className="text-lg text-gray-400">🎯 Más cercano</p>
+                <p className="text-2xl font-bold text-blue-400">{masCercano?.nombre}</p>
+                <p className="text-gray-300">{Math.round(masCercano?.distancia_mayor_proximidad).toLocaleString('en-US')} km</p>
+              </div>
+              <div className="bg-blue-900/20 rounded-xl p-9">
+                <p className="text-lg text-gray-400">⚠️ Más peligroso</p>
+                <p className="text-2xl font-bold text-blue-400">{peligroso}</p>
+                <p className="text-gray-300">de {asteroides.length} detectados</p>
+              </div>
+            </div>
+          </div>
+          }
         </div>
-        <div className="bg-gray-800 rounded-xl p-6">
-          <p className="text-lg text-gray-400">🎯 Más cercano</p>
-          <p className="text-2xl font-bold text-blue-400">{masCercano?.nombre}</p>
-          <p className="text-gray-300">{Math.round(masCercano?.distancia_mayor_proximidad).toLocaleString('en-US')} km</p>
-        </div>
-        <div className="bg-gray-800 rounded-xl p-6">
-          <p className="text-lg text-gray-400">⚠️ Más peligroso</p>
-          <p className="text-2xl font-bold text-blue-400">{peligroso}</p>
-          <p className="text-gray-300">de {asteroides.length} detectados</p>
-        </div>
-      </div>
-    </div>
-    }
-  </div>
-)
-}
+      </div>  
+      )
+      }
+      
 
 export default Metricas
