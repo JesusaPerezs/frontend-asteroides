@@ -6,7 +6,6 @@ import * as THREE from "three"
 
 function Menu() {
     const planeta = useRef()
-
     useEffect(() => {
     while (planeta.current.firstChild) planeta.current.removeChild(planeta.current.firstChild)
     const escena = new THREE.Scene()
@@ -27,6 +26,15 @@ function Menu() {
     planetaMesh.position.x = 0.9
     planetaMesh.rotation.x = 0.4
 
+    function manejarResize() {
+        const ancho = planeta.current.clientWidth
+        const alto = planeta.current.clientHeight
+        renderer.setSize(ancho, alto)              // 1. nuevo tamaño del canvas
+        camara.aspect = ancho / alto               // 2. nueva proporción de la cámara
+        camara.updateProjectionMatrix()            // 3. ⬅️ la línea escondida
+    }
+    window.addEventListener("resize", manejarResize)
+
     function animar() {
         requestAnimationFrame(animar)   // "vuélveme a llamar en el próximo cuadro"
         planetaMesh.rotation.y += 0.002  // gira un pelín en el eje Y
@@ -36,6 +44,7 @@ function Menu() {
 
     return () => {
         renderer.dispose()
+        window.removeEventListener("resize", manejarResize)
         if (planeta.current) {
             planeta.current.removeChild(canvas)
     }
@@ -54,7 +63,7 @@ function Menu() {
             >
                 <h1
                 style={{fontFamily: "'Exo 2', sans-serif"}}
-                className="text-6xl font-bold tracking-wide"
+                className="text-4xl md:text-6xl font-bold tracking-wide"
                 >
                     SISTEMA DE <br /> DETECCIÓN DE <br /> ASTEROIDES
                 </h1>
