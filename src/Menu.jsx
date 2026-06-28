@@ -11,15 +11,19 @@ function Menu() {
     while (planeta.current.firstChild) planeta.current.removeChild(planeta.current.firstChild)
     const escena = new THREE.Scene()
     const camara = new THREE.PerspectiveCamera(75, planeta.current.clientWidth / planeta.current.clientHeight, 0.1, 1000)
-    camara.position.z = 5
+    camara.position.z = 2
+    const luz = new THREE.DirectionalLight(0xffffff, 1)
+    luz.position.set(5, 3, 5)
     const renderer = new THREE.WebGLRenderer()
     renderer.setSize(planeta.current.clientWidth, planeta.current.clientHeight)
     const canvas = renderer.domElement
     planeta.current.appendChild(canvas)
-    const geometria = new THREE.SphereGeometry(1, 32, 32)
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+    const geometria = new THREE.SphereGeometry(1, 64, 64)
+    const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 })
     const planetaMesh = new THREE.Mesh(geometria, material)
     escena.add(planetaMesh)
+    escena.add(luz)
+     planetaMesh.position.x = 0.9
 
     function animar() {
         requestAnimationFrame(animar)   // "vuélveme a llamar en el próximo cuadro"
