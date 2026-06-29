@@ -8,7 +8,7 @@ const planeta = useRef()
     const escena = new THREE.Scene()
     const textura = new THREE.TextureLoader().load(props.textura)
     const camara = new THREE.PerspectiveCamera(75, planeta.current.clientWidth / planeta.current.clientHeight, 0.1, 1000)
-    camara.position.z = 1.9
+    camara.position.z = props.zoom || 1.9
     const luz = new THREE.DirectionalLight(0xffffff, 1)
     luz.position.set(5, 3, 5)
     const renderer = new THREE.WebGLRenderer()
@@ -18,10 +18,23 @@ const planeta = useRef()
     const geometria = new THREE.SphereGeometry(1, 64, 64)
     const material = new THREE.MeshStandardMaterial({ map: textura })
     const planetaMesh = new THREE.Mesh(geometria, material)
-    escena.add(planetaMesh)
+    escena.add(planetaMesh) 
     escena.add(luz)
     const ancho = planeta.current.clientWidth
-    planetaMesh.position.x = ancho < 768 ? 0.3 : 0.7
+    planetaMesh.position.x = props.posX ?? (ancho < 768 ? 0.3 : 0.7)
+    planetaMesh.position.y = props.posY || 0
+    if (props.anillo) {
+        const texturaAnillo = new THREE.TextureLoader().load(props.anillo)
+        const geometriaAnillo = new THREE.RingGeometry(1.1, 2.1, 64)   // ⬅️ interno más grande
+        const materialAnillo = new THREE.MeshBasicMaterial({ map: texturaAnillo, side: THREE.DoubleSide, transparent: true })
+        const anilloMesh = new THREE.Mesh(geometriaAnillo, materialAnillo)
+        anilloMesh.rotation.x = Math.PI / 2.2
+        anilloMesh.position.x = planetaMesh.position.x   // ⬅️ misma posición que el planeta
+        anilloMesh.position.y = planetaMesh.position.y
+        escena.add(anilloMesh)
+}
+
+    
     planetaMesh.rotation.x = 0.4
 
     function manejarResize() {
