@@ -19,10 +19,10 @@ function Asteroides() { // define tu componente
   }, [])
 
   return (
-    <div className="min-h-screen bg-black text-white p-8 text-center"> 
+    <div className="min-h-screen bg-black text-white p-8 text-center relative overflow-hidden"> 
       <h1 
       style={{fontFamily: "'Exo 2', sans-serif"}}
-      className="text-6xl font-bold tracking-wide mb-16"
+      className="text-5xl sm:text-4xl md:text-6xl font-bold tracking-wide mb-16"
       >
         ASTEROIDES DETECTADOS
       </h1>
