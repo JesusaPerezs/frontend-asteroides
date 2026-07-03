@@ -2,7 +2,7 @@
 
 > Monitor visual de asteroides cercanos a la Tierra con datos reales de la NASA.
 
-[🚀 Ver app en vivo](https://frontend-asteroides.vercel.app) · [⚙️ Backend / API](aquí-va-el-link-de-tu-otro-repo)
+[🚀 Ver app en vivo](https://frontend-asteroides.vercel.app) · [⚙️ Backend / API](https://github.com/JesusaPerezs/asteroides-api)
 
 ---
 
