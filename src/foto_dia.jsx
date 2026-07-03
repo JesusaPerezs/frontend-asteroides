@@ -44,7 +44,7 @@ function FotoDia() {
                 <p className="text-lg text-gray-00">Fecha</p>
                 <p className="text-2xl font-bold text-blue-400">{foto?.fecha}</p>
               </div>
-              <div className="bg-gray-800/30 rounded-xl p-6">
+              <div className="bg-gray-800/70 rounded-xl p-6">
                 <p className="text-lg text-gray-400">Descripción</p>
                 <p className="text-base font-bold text-blue-400">{foto?.explicacion}</p>
               </div>
