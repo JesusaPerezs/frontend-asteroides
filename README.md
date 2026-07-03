@@ -8,7 +8,6 @@
 
 ## 🌌 Qué es esto
 
-
 Nació de mi fascinación por el espacio, los planetas y los asteroides. Es un
 monitor visual que consulta datos reales de la NASA sobre asteroides cercanos a
 la Tierra, los organiza por sus métricas (tamaño, velocidad, distancia,
@@ -35,16 +34,16 @@ Júpiter y Saturno con sus anillos. 🪐
 
 - 🌍 **Planetas 3D girando** de fondo (Tierra, Júpiter y Saturno con anillos), con un componente `Planeta.jsx` reutilizable
 - ☄️ **Lista de asteroides** cercanos con sus datos reales de la NASA
+- 🌠 **Asteroide 3D cruzando en diagonal** de fondo en la lista, hecho con Three.js (`IcosahedronGeometry` + `flatShading` para el look de roca)
 - 📊 **Métricas** calculadas sobre los asteroides (tamaño, velocidad, distancia, peligrosidad)
 - 🖼️ **Foto del Día** de la NASA (APOD) con su explicación
-- 🎨 **Diseño HUD oscuro** estilo SpaceX (fuente Exo 2, botones neón, efectos glow)
 
 ## 🔭 Roadmap
 
-- [ ] Animación de un asteroide cruzando la pantalla en la vista de lista
-- [ ] Vista de detalle por asteroide (`/asteroides/:id`)
-- [ ] Filtros dentro de la lista de asteroides
-- [ ] PWA para instalar la app en el celular
+- Animación de un asteroide cruzando la pantalla en la vista de lista
+- Vista de detalle por asteroide (`/asteroides/:id`)
+- Filtros dentro de la lista de asteroides
+- PWA para instalar la app en el celular
 
 ## 🧠 Qué aprendí
 
@@ -54,23 +53,7 @@ reutilizable en lugar de repetir código para cada planeta, y conectar el
 frontend con mi propio backend en producción. Vengo de analítica de datos,
 así que fue mi salto hacia el desarrollo de software.
 
-## 📸 Pantallas
 
-| Asteroides | Métricas | Foto del Día |
-|:---:|:---:|:---:|
-| ![Pantalla de asteroides](./public/screenshots/asteroides.png) | ![Métricas](./public/screenshots/metricas.png) | ![Foto del día](./public/screenshots/foto.png) |
-
-## ✨ Features
-
-- 🌍 **Planetas 3D girando** de fondo (Tierra, Júpiter y Saturno con anillos), con un componente `Planeta.jsx` reutilizable
-- ☄️ **Lista de asteroides** cercanos con sus datos reales de la NASA
-- 📊 **Métricas** calculadas sobre los asteroides (tamaño, velocidad, distancia, peligrosidad)
-- 🖼️ **Foto del Día** de la NASA (APOD) con su explicación
-- 🎨 **Diseño HUD oscuro** estilo SpaceX (fuente Exo 2, botones neón, efectos glow)
-
-## ⚙️ Correr localmente
-
-​```bash
 # Clonar e instalar
 git clone https://github.com/JesusaPerezs/frontend-asteroides.git
 cd frontend-asteroides
@@ -83,12 +66,6 @@ npm run dev
 > Si conectas tu propio backend, agrega un archivo `.env` con la URL de tu API
 > (por ejemplo `VITE_API_URL`). El `.env` no se sube al repo.
 
-## 🔭 Roadmap
-
-- [ ] Animación de un asteroide cruzando la pantalla en la vista de lista
-- [ ] Vista de detalle por asteroide (`/asteroides/:id`)
-- [ ] Filtros dentro de la lista de asteroides
-- [ ] PWA para instalar la app en el celular
 
 ## 🧠 Qué aprendí
 
