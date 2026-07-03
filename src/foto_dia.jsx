@@ -33,13 +33,13 @@ function FotoDia() {
 
           {cargando
           ? <p className="text-center text-xl">Cargando... 🌀</p>
-          :<div className="flex flex-col md:flex-row gap-[200px]">
-            <div className="flex flex-col justify-center items-center md:w-1/3 bg-gray-800/40 rounded-xl p-9">
+          :<div className="flex flex-col md:flex-row gap-[210px]">
+            <div className="flex flex-col justify-center items-center md:w-1/2 bg-gray-900/40 rounded-xl p-9">
               {foto?.media_type === "image"
               ? <img src={foto?.link} className="w-full h-auto rounded-xl"/>
               : <a href={foto?.link}>Ver video 🎬</a>}
             </div>
-            <div className="md:w-2/3 flex flex-col space-y-4 gap-4">
+            <div className="md:w-1/2 flex flex-col space-y-4 gap-4">
               <div className="flex flex-col md:flex-row gap-4">
                 <p className="text-lg text-gray-00">Fecha</p>
                 <p className="text-2xl font-bold text-blue-400">{foto?.fecha}</p>
