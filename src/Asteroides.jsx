@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 // useState - guarda datos que cambian. Ej: la lista de asteroides. 
 // useEffect → ejecuta algo en un momento dado. Ej: traer los datos al cargar la página. 
+import AsteroideCruzando from "./AsteroideCruzando"
 
 function Asteroides() { // define tu componente
   const [asteroides, setAsteroides] = useState([]) // const = variable
@@ -20,6 +21,10 @@ function Asteroides() { // define tu componente
 
   return (
     <div className="min-h-screen bg-black text-white p-8 text-center relative overflow-hidden"> 
+      <div className="fixed inset-0 z-0">
+        <AsteroideCruzando />
+      </div>
+      <div className="relative z-10">
       <h1 
       style={{fontFamily: "'Exo 2', sans-serif"}}
       className="text-5xl sm:text-4xl md:text-6xl font-bold tracking-wide mb-16"
@@ -53,6 +58,7 @@ function Asteroides() { // define tu componente
         </div>
       }
     </div>
+  </div>
   )
 }
 

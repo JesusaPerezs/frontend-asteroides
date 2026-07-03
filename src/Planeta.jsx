@@ -34,7 +34,6 @@ const planeta = useRef()
         escena.add(anilloMesh)
 }
 
-    
     planetaMesh.rotation.x = 0.4
 
     function manejarResize() {
