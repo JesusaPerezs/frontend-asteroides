@@ -28,7 +28,7 @@ Júpiter y Saturno con sus anillos. 🪐
 
 | Asteroides | Métricas | Foto del Día |
 |:---:|:---:|:---:|
-| ![Pantalla de asteroides](./public/screenshots/asteroides.png) | ![Métricas](./public/screenshots/metricas.png) | ![Foto del día](./public/screenshots/foto.png) |
+| ![Pantalla de asteroides] | ![Métricas] | ![Foto del día] |
 
 
 ## ✨ Features
