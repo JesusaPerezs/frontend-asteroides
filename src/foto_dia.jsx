@@ -26,7 +26,7 @@ function FotoDia() {
         <div className="relative z-10">
           <h1 
           style={{fontFamily: "'Exo 2', sans-serif"}}
-          className="text-6xl font-bold tracking-wide text-center mb-8"
+          className="text-5xl font-bold tracking-wide text-center mb-8"
           >
             FOTO DEL DIA
           </h1>
@@ -35,13 +35,14 @@ function FotoDia() {
           ? <p className="text-center text-xl">Cargando... 🌀</p>
           :<div className="flex flex-col md:flex-row gap-[210px]">
             <div className="flex flex-col justify-center items-center md:w-1/2 bg-gray-900/40 rounded-xl p-9">
+              <p className="text-lg font-bold text-blue-400 mb-3 text-center">{foto?.titulo}</p>
               {foto?.media_type === "image"
               ? <img src={foto?.link} className="w-full h-auto rounded-xl"/>
               : <a href={foto?.link}>Ver video 🎬</a>}
             </div>
             <div className="md:w-1/2 flex flex-col space-y-4 gap-4">
               <div className="flex flex-col md:flex-row gap-4">
-                <p className="text-lg text-gray-00">Fecha</p>
+                <p className="text-lg text-gray-400">Fecha</p>
                 <p className="text-2xl font-bold text-blue-400">{foto?.fecha}</p>
               </div>
               <div className="bg-gray-800/70 rounded-xl p-6">
