@@ -11,7 +11,7 @@ const planeta = useRef()
     camara.position.z = props.zoom || 1.9
     const luz = new THREE.DirectionalLight(0xffffff, 1)
     luz.position.set(5, 3, 5)
-    const renderer = new THREE.WebGLRenderer()
+    const renderer = new THREE.WebGLRenderer({ alpha: true})
     renderer.setSize(planeta.current.clientWidth, planeta.current.clientHeight)
     const canvas = renderer.domElement
     planeta.current.appendChild(canvas)
