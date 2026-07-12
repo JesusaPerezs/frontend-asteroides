@@ -63,6 +63,16 @@ useEffect(() => {
                 <div style={{height: "900px"}} className="relative inset-0 z-20">
                     <Planeta textura="/tierra_noche_2.jpg" zoom={2.3} posX={0.6} posY={0.5} />
                 </div>
+                <div className="flex flex-row justify-between border-b border-gray-700 absolute left-20 top-60">
+                    <p
+                    style={{fontFamily: "'Exo 2', sans-serif"}}  
+                    className="text-2xl font-bold mb-3 text-center">Latitud:  {latitud}</p>
+                </div>
+                <div className="flex flex-row justify-between border-b border-gray-700 absolute left-20 top-80">
+                    <p 
+                    style={{fontFamily: "'Exo 2', sans-serif"}} 
+                    className="text-2xl font-bold mb-3 text-center">Longitud:  {longitude}</p>
+                </div>
             </div>
             }</div>
     </div>
