@@ -33,6 +33,17 @@ const planeta = useRef()
         anilloMesh.position.y = planetaMesh.position.y
         escena.add(anilloMesh)
 }
+    if (props.ubicacion_iss) {
+        const geometriaISS = new THREE.SphereGeometry(0.05, 16, 16)
+        const materialesISS = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+        const issMesh = new THREE.Mesh(geometriaISS, materialesISS)
+        issMesh.position.set(
+            props.ubicacion_iss.x,
+            props.ubicacion_iss.y,
+            props.ubicacion_iss.z)
+        console.log("posición ISS:", issMesh.position)
+        planetaMesh.add(issMesh)
+}
 
     planetaMesh.rotation.x = 0.4
 
@@ -59,7 +70,7 @@ const planeta = useRef()
             planeta.current.removeChild(canvas)
     }
 }
-}, [])
+}, [props.ubicacion_iss])
 
     return(
         <div ref={planeta} className="w-full h-full"></div>

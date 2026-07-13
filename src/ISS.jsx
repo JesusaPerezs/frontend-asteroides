@@ -31,6 +31,9 @@ useEffect(() => {
   const longitude = iss?.iss_position?.longitude
   const latitud = iss?.iss_position?.latitude
   const [cargando, setCargando] = useState(true)
+  const x = 1.15 * Math.cos(latitud * Math.PI/180) * Math.cos(longitude * Math.PI/180)
+  const y = 1.15 * Math.sin(latitud * Math.PI/180)
+  const z = 1.15 * Math.cos(latitud * Math.PI/180) * Math.sin(longitude * Math.PI/180)
 
   return (
     <div className="min-h-screen bg-black bg-cover text-white p-8 relative overflow-hidden">
@@ -61,7 +64,13 @@ useEffect(() => {
             ?<p className="text-center text-xl"> Cargando... 🌀</p>
             : <div className="text-center text-xl">
                 <div style={{height: "900px"}} className="relative inset-0 z-20">
-                    <Planeta textura="/tierra_noche_2.jpg" zoom={2.3} posX={0.6} posY={0.5} />
+                    <Planeta 
+                    textura="/tierra_noche_2.jpg" 
+                    zoom={2.5} 
+                    posX={0.6} 
+                    posY={0.5}
+                    ubicacion_iss={{x, y, z}}
+                     />
                 </div>
                 <div className="flex flex-row justify-between border-b border-gray-700 absolute left-20 top-60">
                     <p
