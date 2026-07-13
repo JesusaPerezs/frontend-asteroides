@@ -34,15 +34,22 @@ const planeta = useRef()
         escena.add(anilloMesh)
 }
     if (props.ubicacion_iss) {
-        const geometriaISS = new THREE.SphereGeometry(0.05, 16, 16)
-        const materialesISS = new THREE.MeshBasicMaterial({ color: 0xff0000 })
-        const issMesh = new THREE.Mesh(geometriaISS, materialesISS)
-        issMesh.position.set(
-            props.ubicacion_iss.x,
-            props.ubicacion_iss.y,
+        const canvas = document.createElement("canvas")
+        canvas.width = 64
+        canvas.height = 64
+        const ctx = canvas.getContext("2d")
+        ctx.font = "38px serif"
+        ctx.fillText("🛰️", 0, 48)
+        const texturaISS = new THREE.CanvasTexture(canvas)
+        const materialesISS = new THREE.SpriteMaterial({ map: texturaISS, transparent: true })
+        const issSprite = new THREE.Sprite(materialesISS)
+        issSprite.scale.set(0.3, 0.3, 1)
+        issSprite.position.set(
+            props.ubicacion_iss.x, 
+            props.ubicacion_iss.y, 
             props.ubicacion_iss.z)
-        console.log("posición ISS:", issMesh.position)
-        planetaMesh.add(issMesh)
+        console.log("posición ISS:", issSprite.position)
+        planetaMesh.add(issSprite)
 }
 
     planetaMesh.rotation.x = 0.4
