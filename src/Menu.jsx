@@ -1,6 +1,6 @@
 import Asteroides from "./Asteroides"
 import { Link } from "react-router-dom"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import * as THREE from "three"
 
 
@@ -14,7 +14,7 @@ function Menu() {
     camara.position.z = 1.9
     const luz = new THREE.DirectionalLight(0xffffff, 1)
     luz.position.set(5, 3, 5)
-    const renderer = new THREE.WebGLRenderer()
+    const renderer = new THREE.WebGLRenderer({ alpha: true })
     renderer.setSize(planeta.current.clientWidth, planeta.current.clientHeight)
     const canvas = renderer.domElement
     planeta.current.appendChild(canvas)
@@ -51,37 +51,68 @@ function Menu() {
     }
 }
 }, [])
-
+    const [estrellas, setEstrellas] = useState([])
+    
+useEffect(() => {
+    const nuevasEstrellas = Array.from({ length: 100 }).map((_, i) => ({
+        id: i,
+        size: Math.random() * 2 + 0.5,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        delay: Math.random() * 4,
+        duration: 2 + Math.random() * 4,
+    }))
+    setEstrellas(nuevasEstrellas)
+    }, [])
+        
     return(
         <div className="min-h-screen bg-black bg-cover relative overflow-hidden">
-
-            {/* 👇 div EXCLUSIVO para el canvas (vacío). El ref va aquí ahora */}
-            <div ref={planeta} className="absolute inset-0 z-0" />
-
-            {/* El menú va aparte, encima del canvas (z-10) y sin bg-black */}
-            <div
-            className="relative z-10 min-h-screen bg-cover bg-center flex flex-col items-start pt-20 gap-.5 p-7 text-white"
-            >
-                <h1
-                style={{fontFamily: "'Exo 2', sans-serif"}}
-                className="text-4xl md:text-6xl font-bold tracking-wide"
-                >
-                    SISTEMA DE <br /> DETECCIÓN DE <br /> ASTEROIDES
-                </h1>
-                <div className="flex flex-col gap-7 mt-[50px] ml-[20px]">
-                    <Link to="/asteroides" className="border border-white/40 shadow-lg px-5 py-4 rounded hover:bg-white/20 hover:text-white tracking-widest uppercase text-sm transition">
-                    Lista Asteroides
-                    </Link>
-                    <Link to="/metricas" className="border border-white/40 shadow-lg px-5 py-4 rounded hover:bg-white/20 hover:text-white tracking-widest uppercase text-sm transition">
-                    Métricas
-                    </Link>
-                    <Link to="/foto_dia" className="border border-white/40 shadow-lg px-5 py-4 rounded hover:bg-white/20 hover:text-white tracking-widest uppercase text-sm transition">
-                    Foto del día
-                    </Link>
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                {estrellas.map(e => (
+                    <div
+                    key={e.id}
+                    className="absolute bg-white rounded-full"
+                    style={{
+                        width: `${e.size}px`,
+                        height: `${e.size}px`,
+                        left: `${e.left}%`,
+                        top: `${e.top}%`,
+                        animation: `twinkle ${e.duration}s ease-in-out infinite`,
+                        animationDelay: `${e.delay}s`,
+                        }}
+                    />
+                    ))}
+                    </div>
+                    {/* 👇 div EXCLUSIVO para el canvas (vacío). El ref va aquí ahora */}
+                    <div ref={planeta} className="absolute inset-0 z-10" />
+                    
+                    {/* El menú va aparte, encima del canvas (z-10) y sin bg-black */}
+                    <div
+                    className="relative z-20 min-h-screen bg-cover bg-center flex flex-col items-start pt-20 gap-.5 p-7 text-white"
+                    >
+                        <h1
+                        style={{fontFamily: "'Exo 2', sans-serif"}}
+                        className="text-4xl md:text-6xl font-bold tracking-wide"
+                        >
+                            SISTEMA DE <br /> DETECCIÓN DE <br /> ASTEROIDES
+                        </h1>
+                        <div className="flex flex-col gap-7 mt-[50px] ml-[20px]">
+                            <Link to="/asteroides" className="border border-white/40 shadow-lg px-5 py-4 rounded hover:bg-white/20 hover:text-white tracking-widest uppercase text-sm transition">
+                            Lista Asteroides
+                            </Link>
+                            <Link to="/metricas" className="border border-white/40 shadow-lg px-5 py-4 rounded hover:bg-white/20 hover:text-white tracking-widest uppercase text-sm transition">
+                            Métricas
+                            </Link>
+                            <Link to="/foto_dia" className="border border-white/40 shadow-lg px-5 py-4 rounded hover:bg-white/20 hover:text-white tracking-widest uppercase text-sm transition">
+                            Foto del día
+                            </Link>
+                            <Link to="/iss" className="border border-white/40 shadow-lg px-5 py-4 rounded hover:bg-white/20 hover:text-white tracking-widest uppercase text-sm transition">
+                            Estación espacial Internacional
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    )
+            )
 }
 
 export default Menu
