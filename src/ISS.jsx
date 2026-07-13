@@ -36,7 +36,7 @@ useEffect(() => {
   const z = 1.15 * Math.cos(latitud * Math.PI/180) * Math.sin(longitude * Math.PI/180)
 
   return (
-    <div className="min-h-screen bg-black bg-cover text-white p-8 relative overflow-hidden">
+    <div className="min-h-screen bg-black bg-cover text-white relative overflow-hidden">
         <div className="relative z-10">
             <div className="absolute inset-0 z-0 overflow-hidden">
                 {estrellas.map(e => (
@@ -56,7 +56,7 @@ useEffect(() => {
             </div>
             <h1
             style={{fontFamily: "'Exo 2', sans-serif"}}
-            className="text-6xl font-bold tracking-wide text-center mb-8"
+            className="text-4xl md:text-6xl font-bold tracking-wide text-center mb-8"
             >
                 Estacion Espacial Internacional
             </h1>
@@ -67,17 +67,16 @@ useEffect(() => {
                     <Planeta 
                     textura="/tierra_noche_2.jpg" 
                     zoom={2.5} 
-                    posX={0.6} 
                     posY={0.5}
                     ubicacion_iss={{x, y, z}}
                      />
                 </div>
-                <div className="flex flex-row justify-between border-b border-gray-700 absolute left-20 top-60">
+                <div className="flex flex-row justify-between border-b border-gray-700 absolute left-4 md:left-20 top-60 md:top-60 z-40">
                     <p
                     style={{fontFamily: "'Exo 2', sans-serif"}}  
                     className="text-2xl font-bold mb-3 text-center">Latitud:  {latitud}</p>
                 </div>
-                <div className="flex flex-row justify-between border-b border-gray-700 absolute left-20 top-80">
+                <div className="flex flex-row justify-between border-b border-gray-700 absolute left-4 md:left-20 top-76 md:top-80 z-40">
                     <p 
                     style={{fontFamily: "'Exo 2', sans-serif"}} 
                     className="text-2xl font-bold mb-3 text-center">Longitud:  {longitude}</p>

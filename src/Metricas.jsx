@@ -13,6 +13,18 @@ function Metricas() {
         setCargando(false)
   })
   }, [])
+  const [estrellas, setEstrellas] = useState([])
+  useEffect(() => {
+      const nuevasEstrellas = Array.from({ length: 100 }).map((_, i) => ({
+          id: i,
+          size: Math.random() * 2 + 0.5,
+          left: Math.random() * 100,
+          top: Math.random() * 100,
+          delay: Math.random() * 4,
+          duration: 2 + Math.random() * 4,
+      }))
+      setEstrellas(nuevasEstrellas)
+      }, [])
   
   const masRapido = [...asteroides].sort((a,b) => b.velocidad_km_hours - a.velocidad_km_hours)[0]
   const masGrande = [...asteroides].sort((a,b) => b.tamaño_km - a.tamaño_km)[0]
@@ -21,7 +33,22 @@ function Metricas() {
 
   return (
     <div className="min-h-screen bg-black bg-cover text-white p-8 relative overflow-hidden">
-
+      <div className="absolute inset-0 z-0 overflow-hidden">
+          {estrellas.map(e => (
+              <div
+              key={e.id}
+              className="absolute bg-white rounded-full"
+              style={{
+                  width: `${e.size}px`,
+                  height: `${e.size}px`,
+                  left: `${e.left}%`,
+                  top: `${e.top}%`,
+                  animation: `twinkle ${e.duration}s ease-in-out infinite`,
+                  animationDelay: `${e.delay}s`,
+              }}
+              />
+          ))}
+      </div>
         {/* Júpiter de fondo */}
         <div className="absolute inset-0 z-0">
             <Planeta textura="/jupiter.jpg" />
